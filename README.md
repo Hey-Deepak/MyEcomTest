@@ -4,6 +4,7 @@
 3. Retofilt
 4. Corotine
 5. NavHost for Navigaton
+6. Coil Image Library
 
 ## Completed
 1. Sign UP with Room Databases 
@@ -11,8 +12,13 @@
 3. Home Banner Slider with Retofit
 4. Hot and Top Categories with Retofit 
 5. Top App Bar
+6. Login Screen
+7. Profile Screen
+8. Home Screen
+9. Sign-up Screen
+10. Login Screen
 
 ## Remaining
-1. Login Screen
-2. Profile Screen
-3. All Screen Connected with Nested Nav Graph
+1. Splash Screen
+2. Need to Modify Repo and ViewModel According to need.
+3. All Screen need to Connected with Nested Nav Graph
