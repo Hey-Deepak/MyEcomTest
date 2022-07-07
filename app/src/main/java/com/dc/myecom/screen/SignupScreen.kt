@@ -1,5 +1,6 @@
 package com.dc.myecom.screen
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -17,19 +18,25 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.dc.myecom.R
+import com.dc.myecom.data.User
 import com.dc.myecom.model.profile.Profile
 import com.dc.myecom.viewmodel.ProfileViewModel
+import com.dc.myecom.viewmodel.UserViewModel
 
 @Composable
 fun SignupScreen(
-    profileViewModel: ProfileViewModel
+    profileViewModel: ProfileViewModel,
+    userViewModel: UserViewModel
 ) {
+    val context = LocalContext.current
     val stateScroll = rememberScrollState()
     Column(
         modifier = Modifier
@@ -161,22 +168,32 @@ fun SignupScreen(
 
         // Signup Button
         Button(
-            onClick = { profileViewModel.signup(
-                profile = Profile(
-                    profileViewModel.userNameState.value,
-                    profileViewModel.userEmailidState.value,
-                    profileViewModel.userMobileNumberState.value,
-                    profileViewModel.userReferralCodeState.value,
-                    profileViewModel.userPasswordState.value
-                )
-            ) },
+            onClick = {
+
+                      userViewModel.addUser(user = User(
+                          profileViewModel.userNameState.value,
+                          profileViewModel.userEmailidState.value,
+                          profileViewModel.userMobileNumberState.value,
+                          profileViewModel.userReferralCodeState.value,
+                          profileViewModel.userPasswordState.value
+                      ))
+                      profileViewModel.clear()
+                Toast.makeText(context, "Profile Created", Toast.LENGTH_LONG).show()
+                       },
             modifier = Modifier
                 .width(250.dp)
                 .padding(20.dp)
-                .clip(shape = RoundedCornerShape(16.dp) )
+                .clip(shape = RoundedCornerShape(16.dp))
         ) {
             Text(text = "SIGN UP",
             fontSize = 24.sp)
+        }
+
+        // Sign IN
+        Row {
+        Text(text = "Already Have an Account?  ")
+            Text(text = "Sign In", color = Color.Magenta)
+            
         }
 
     }

@@ -36,7 +36,8 @@ fun TopCategory() {
 
                     Box(
                         modifier = Modifier
-                            .size(150.dp),
+                            .size(150.dp)
+                            .border(BorderStroke(1.dp, Color.Blue)),
                         contentAlignment = Alignment.Center
                     ) {
                         AsyncImage(model = item.var_icon, contentDescription = "")
