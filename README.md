@@ -20,4 +20,5 @@
 
 ## Remaining
 1. Splash Screen
-3. All Screen Connected with Nested Nav Graph
+2. Need to Modify Repo and ViewModel According to need.
+3. All Screen need to Connected with Nested Nav Graph
