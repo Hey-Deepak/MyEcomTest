@@ -28,9 +28,7 @@ import coil.compose.rememberAsyncImagePainter
 import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
 import com.dc.myecom.R
-import com.dc.myecom.screen.components.HomeBanner
-import com.dc.myecom.screen.components.TopBar
-import com.dc.myecom.screen.components.TopCategory
+import com.dc.myecom.screen.components.*
 import com.dc.myecom.viewmodel.MainViewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
@@ -58,6 +56,9 @@ fun HomeScreen(
 
         TopCategory()
 
+        HeaderForHotCategory()
+
+        HotCategory()
 
     }
 }
