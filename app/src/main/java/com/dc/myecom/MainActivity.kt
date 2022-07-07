@@ -7,15 +7,11 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.dc.myecom.screen.MainScreen
 import com.dc.myecom.screen.SignupScreen
 import com.dc.myecom.ui.theme.MyEcomTheme
-import com.dc.myecom.viewmodel.MainViewModel
 import com.dc.myecom.viewmodel.ProfileViewModel
+import com.dc.myecom.viewmodel.UserViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +26,8 @@ class MainActivity : ComponentActivity() {
                     Log.d("TAG", "onCreate: ")
                     //MainScreen()
                     val profileViewModel = ProfileViewModel()
-                    SignupScreen(profileViewModel)
+                    val userViewModel = UserViewModel(application = application)
+                    SignupScreen(profileViewModel, userViewModel)
                 }
             }
         }

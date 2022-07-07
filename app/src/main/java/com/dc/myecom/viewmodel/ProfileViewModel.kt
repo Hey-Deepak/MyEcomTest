@@ -5,13 +5,15 @@ import androidx.lifecycle.ViewModel
 import com.dc.myecom.model.profile.Profile
 
 class ProfileViewModel: ViewModel() {
-    fun signup(profile:Profile) {
-        userNameState.value = profile.name
-        userEmailidState.value = profile.emailId
-        userMobileNumberState.value = profile.mobileNumber
-        userReferralCodeState.value = profile.referralCode
-        userPasswordState.value = profile.password
+    fun clear() {
+        userNameState.value = ""
+        userEmailidState.value = ""
+        userMobileNumberState.value = ""
+        userReferralCodeState.value = ""
+        userPasswordState.value = ""
     }
+
+
 
     val userNameState = mutableStateOf("")
     val userEmailidState = mutableStateOf("")
