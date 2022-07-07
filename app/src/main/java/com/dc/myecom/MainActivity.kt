@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
+import com.dc.myecom.screen.LoginScreen
+import com.dc.myecom.screen.MainScreen
 import com.dc.myecom.screen.SignupScreen
 import com.dc.myecom.ui.theme.MyEcomTheme
 import com.dc.myecom.viewmodel.ProfileViewModel
@@ -24,10 +26,12 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     Log.d("TAG", "onCreate: ")
-                    //MainScreen()
+                   /* MainScreen()
                     val profileViewModel = ProfileViewModel()
                     val userViewModel = UserViewModel(application = application)
                     SignupScreen(profileViewModel, userViewModel)
+                    */
+                    LoginScreen()
                 }
             }
         }
