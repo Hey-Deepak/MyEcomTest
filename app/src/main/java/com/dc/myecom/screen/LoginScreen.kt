@@ -117,7 +117,7 @@ fun LoginScreen() {
                 .padding(20.dp)
                 .clip(shape = RoundedCornerShape(16.dp))
         ) {
-            Text(text = "SIGN UP",
+            Text(text = "SIGN IN",
                 fontSize = 24.sp)
         }
 
