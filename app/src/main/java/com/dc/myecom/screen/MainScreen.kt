@@ -5,24 +5,24 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.painterResource
-import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.dc.myecom.BottomBarScreen
-import com.dc.myecom.BottomNavGraph
-import com.dc.myecom.R
+import com.dc.myecom.navigation.BottomBarScreen
+import com.dc.myecom.NavGraph
+import com.dc.myecom.viewmodel.ProfileViewModel
+import com.dc.myecom.viewmodel.UserViewModel
 
 @Composable
-fun MainScreen() {
+fun MainScreen(profileViewModel: ProfileViewModel, userViewModel: UserViewModel) {
     val navController = rememberNavController()
     Scaffold(
         bottomBar = { BottomBar(navController = navController)}
     ) {
-        BottomNavGraph(navController = navController)
+        NavGraph(navController = navController, profileViewModel, userViewModel)
     }
 }
 

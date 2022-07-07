@@ -2,6 +2,7 @@ package com.dc.myecom.screen
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -22,13 +23,16 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.dc.myecom.R
 import com.dc.myecom.data.User
+import com.dc.myecom.navigation.AuthScreen
+import com.dc.myecom.navigation.BottomBarScreen
 import com.dc.myecom.viewmodel.LoginViewModel
 import kotlin.math.log
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavHostController) {
     val context = LocalContext.current
     val loginViewModel = LoginViewModel()
 
@@ -108,7 +112,7 @@ fun LoginScreen() {
         Button(
             onClick = {
 
-
+            navController.navigate(BottomBarScreen.Home.route)
 
                 Toast.makeText(context, "User Signed In", Toast.LENGTH_LONG).show()
             },
@@ -124,7 +128,10 @@ fun LoginScreen() {
         // Sign Up
         Row {
             Text(text = "Not a member yet?  ")
-            Text(text = "Sign Up", color = Color.Magenta)
+            Text(text = "Sign Up", color = Color.Magenta,
+            modifier = Modifier.clickable {
+                navController.navigate(AuthScreen.Signup.route)
+            })
 
         }
 

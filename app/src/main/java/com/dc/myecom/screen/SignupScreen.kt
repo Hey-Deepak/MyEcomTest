@@ -2,6 +2,7 @@ package com.dc.myecom.screen
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,16 +26,19 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.dc.myecom.R
 import com.dc.myecom.data.User
 import com.dc.myecom.model.profile.Profile
+import com.dc.myecom.navigation.AuthScreen
 import com.dc.myecom.viewmodel.ProfileViewModel
 import com.dc.myecom.viewmodel.UserViewModel
 
 @Composable
 fun SignupScreen(
     profileViewModel: ProfileViewModel,
-    userViewModel: UserViewModel
+    userViewModel: UserViewModel,
+    navController: NavHostController
 ) {
     val context = LocalContext.current
     val stateScroll = rememberScrollState()
@@ -179,6 +183,7 @@ fun SignupScreen(
                       ))
                       profileViewModel.clear()
                 Toast.makeText(context, "Profile Created", Toast.LENGTH_LONG).show()
+                navController.navigate(AuthScreen.Login.route)
                        },
             modifier = Modifier
                 .width(250.dp)
@@ -192,7 +197,10 @@ fun SignupScreen(
         // Sign IN
         Row {
         Text(text = "Already Have an Account?  ")
-            Text(text = "Sign In", color = Color.Magenta)
+            Text(text = "Login In", color = Color.Magenta,
+            modifier = Modifier.clickable {
+                navController.navigate(AuthScreen.Login.route)
+            })
             
         }
 

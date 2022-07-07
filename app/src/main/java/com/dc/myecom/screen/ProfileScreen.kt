@@ -16,6 +16,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.dc.myecom.R
 import com.dc.myecom.repository.UserRepository
@@ -23,8 +24,7 @@ import com.dc.myecom.screen.components.TopBar
 import com.dc.myecom.viewmodel.ProfileViewModel
 
 @Composable
-fun ProfileScreen(
-) {
+fun ProfileScreen(navController: NavHostController) {
     val context = LocalContext.current
     val profileViewModel = ProfileViewModel()
     Column(modifier = Modifier) {

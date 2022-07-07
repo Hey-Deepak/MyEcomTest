@@ -1,4 +1,6 @@
-package com.dc.myecom
+package com.dc.myecom.navigation
+
+import com.dc.myecom.R
 
 
 sealed class BottomBarScreen(
