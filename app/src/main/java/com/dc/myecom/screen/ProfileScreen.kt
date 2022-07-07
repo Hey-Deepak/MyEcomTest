@@ -27,6 +27,10 @@ import com.dc.myecom.viewmodel.ProfileViewModel
 fun ProfileScreen(navController: NavHostController) {
     val context = LocalContext.current
     val profileViewModel = ProfileViewModel()
+    Scaffold(
+        bottomBar = { BottomBar(navController = navController)}
+    ) {
+    }
     Column(modifier = Modifier) {
         TopBar(title = "Edit Profile", buttonIcon = painterResource(id = R.drawable.ic_baseline_arrow_back_24)) {
         }

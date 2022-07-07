@@ -19,11 +19,9 @@ import com.dc.myecom.viewmodel.UserViewModel
 @Composable
 fun MainScreen(profileViewModel: ProfileViewModel, userViewModel: UserViewModel) {
     val navController = rememberNavController()
-    Scaffold(
-        bottomBar = { BottomBar(navController = navController)}
-    ) {
-        NavGraph(navController = navController, profileViewModel, userViewModel)
-    }
+
+    NavGraph(navController = navController, profileViewModel, userViewModel)
+
 }
 
 @Composable

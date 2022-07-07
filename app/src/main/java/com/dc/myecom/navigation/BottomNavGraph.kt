@@ -1,5 +1,6 @@
 package com.dc.myecom
 
+import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -18,7 +19,11 @@ fun NavGraph(
     profileViewModel: ProfileViewModel,
     userViewModel: UserViewModel
 ) {
+
+
     NavHost(navController = navController, startDestination = AuthScreen.Login.route){
+
+
         composable(route = BottomBarScreen.Home.route){
             HomeScreen(navController)
         }
