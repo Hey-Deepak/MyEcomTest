@@ -42,22 +42,21 @@ import kotlinx.coroutines.delay
 @Composable
 fun HomeScreen(
 ) {
-    Column(modifier = Modifier
-        .fillMaxSize()) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
 
-            TopBar(
-                title = "Home",
-                buttonIcon = painterResource(id = R.drawable.ic_baseline_menu_all_24)
-            ) {}
-
+        TopBar(
+            title = "Home",
+            buttonIcon = painterResource(id = R.drawable.ic_baseline_menu_all_24)
+        ) {}
 
         HomeBanner()
 
-
-
         HeaderForTopCategory()
 
-            TopCategory()
+        TopCategory()
 
 
     }
