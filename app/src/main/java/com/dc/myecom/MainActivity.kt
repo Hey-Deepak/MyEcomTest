@@ -26,8 +26,6 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     Log.d("TAG", "onCreate: ")
-                    val viewModel = MainViewModel()
-                    viewModel.getAllHomeBanner()
                     MainScreen()
                 }
             }
