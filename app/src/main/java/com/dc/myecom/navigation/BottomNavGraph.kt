@@ -35,7 +35,7 @@ fun NavGraph(
             OrderScreen(navController)
         }
         composable(route = BottomBarScreen.Profile.route){
-            ProfileScreen(navController, profileViewModel)
+            ProfileScreen(navController, profileViewModel,loginViewModel)
         }
         composable(route = AuthScreen.Login.route){
             LoginScreen(navController, loginViewModel)

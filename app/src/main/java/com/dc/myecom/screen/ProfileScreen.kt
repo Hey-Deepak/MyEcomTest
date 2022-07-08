@@ -1,9 +1,12 @@
 package com.dc.myecom.screen
 
 import android.widget.Toast
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,16 +24,17 @@ import coil.compose.AsyncImage
 import com.dc.myecom.R
 import com.dc.myecom.repository.UserRepository
 import com.dc.myecom.screen.components.TopBar
+import com.dc.myecom.viewmodel.LoginViewModel
 import com.dc.myecom.viewmodel.ProfileViewModel
 
 @Composable
-fun ProfileScreen(navController: NavHostController, profileViewModel: ProfileViewModel) {
+fun ProfileScreen(navController: NavHostController, profileViewModel: ProfileViewModel, loginViewModel: LoginViewModel) {
     val context = LocalContext.current
     Scaffold(
         bottomBar = { BottomBar(navController = navController)}
     ) {
     }
-    Column(modifier = Modifier) {
+    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
         TopBar(title = "Edit Profile", buttonIcon = painterResource(id = R.drawable.ic_baseline_arrow_back_24)) {
         }
 
@@ -50,9 +54,9 @@ fun ProfileScreen(navController: NavHostController, profileViewModel: ProfileVie
             // Name
 
             OutlinedTextField(
-                value = profileViewModel.userNameState.value,
+                value = loginViewModel.name.value,
                 onValueChange = {
-                    profileViewModel.userNameState.value = it
+                    loginViewModel.name.value = it
                 },
                 modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
@@ -73,9 +77,9 @@ fun ProfileScreen(navController: NavHostController, profileViewModel: ProfileVie
             // Email
 
             OutlinedTextField(
-                value = profileViewModel.userEmailidState.value,
+                value = loginViewModel.email.value,
                 onValueChange = {
-                    profileViewModel.userEmailidState.value = it
+                    loginViewModel.email.value = it
                 },
                 modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
@@ -96,9 +100,9 @@ fun ProfileScreen(navController: NavHostController, profileViewModel: ProfileVie
             // Mobile Number
 
             OutlinedTextField(
-                value = profileViewModel.userMobileNumberState.value,
+                value = loginViewModel.mobileNumber.value,
                 onValueChange = {
-                    profileViewModel.userMobileNumberState.value = it
+                    loginViewModel.mobileNumber.value = it
                 },
                 modifier = Modifier.fillMaxWidth(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),

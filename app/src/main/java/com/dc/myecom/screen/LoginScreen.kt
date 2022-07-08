@@ -113,7 +113,9 @@ fun LoginScreen(navController: NavHostController, loginViewModel: LoginViewModel
             onClick = {
                 Log.d("TAG", "LoginScreen: ${loginViewModel.mobileNumber.value} ${loginViewModel.password.value}")
                 loginViewModel.isProfileExit(loginViewModel.mobileNumber.value, loginViewModel.password.value, onProfileExit = {
-                    navController.navigate(BottomBarScreen.Home.route)
+                    navController.navigate(BottomBarScreen.Home.route){
+                        popUpTo(AuthScreen.Login.route) { inclusive = true }
+                    }
                     Toast.makeText(context, "User Signed In", Toast.LENGTH_LONG).show()
                 }, onProfileDoesNotExit = {
                     Toast.makeText(context, "Profile Doesn't Exit", Toast.LENGTH_LONG).show()

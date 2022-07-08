@@ -16,6 +16,8 @@ class LoginViewModel @Inject constructor(
 
     val mobileNumber = mutableStateOf("")
     val password = mutableStateOf("")
+    val name = mutableStateOf("")
+    val email = mutableStateOf("")
     val isProfileExit = mutableStateOf(false)
 
     fun isProfileExit(mobileNumber: String, password: String, onProfileExit:()-> Unit, onProfileDoesNotExit:()->Unit){
@@ -31,6 +33,8 @@ class LoginViewModel @Inject constructor(
                     Log.d("TAG", "isProfileExit: ${it}")
                     if (it.mobileNumber == mobileNumber && it.password == password){
                         result = true
+                        email.value = it.emailId
+                        name.value = it.name
                     }
                 }
                 withContext(Dispatchers.Main){
