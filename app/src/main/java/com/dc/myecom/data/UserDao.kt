@@ -1,6 +1,5 @@
 package com.dc.myecom.data
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -13,6 +12,6 @@ interface UserDao {
     suspend fun addUser(user: User)
 
     @Query("SELECT * FROM user_table")
-    fun readAllData(): LiveData<List<User>>
+    fun readAllData(): List<User>
 
 }

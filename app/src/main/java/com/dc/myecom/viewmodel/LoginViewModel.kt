@@ -6,9 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dc.myecom.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,21 +18,27 @@ class LoginViewModel @Inject constructor(
     val password = mutableStateOf("")
     val isProfileExit = mutableStateOf(false)
 
-    fun isProfileExit(mobileNumber: String, password: String){
+    fun isProfileExit(mobileNumber: String, password: String, onProfileExit:()-> Unit, onProfileDoesNotExit:()->Unit){
         viewModelScope.launch {
             var result = false
             isProfileExit.value = result
 
-            val allUserData = async { userRepository.readAllData().value }.await()
-            Log.d("TAG", "isProfileExit: $allUserData")
+            withContext(Dispatchers.IO) {
+                val allUserData = userRepository.readAllData()
+                Log.d("TAG", "isProfileExit: $allUserData")
 
-            allUserData?.forEach {
-                Log.d("TAG", "isProfileExit: ${it}")
-                if (it.mobileNumber == mobileNumber && it.password == password){
-                    result = true
-                    isProfileExit.value = result
+                allUserData.forEach {
+                    Log.d("TAG", "isProfileExit: ${it}")
+                    if (it.mobileNumber == mobileNumber && it.password == password){
+                        result = true
+                    }
+                }
+                withContext(Dispatchers.Main){
+                    if (result) onProfileExit()
+                    else onProfileDoesNotExit()
                 }
             }
+
         }
 
     }

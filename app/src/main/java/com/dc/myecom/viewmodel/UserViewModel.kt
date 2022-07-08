@@ -13,6 +13,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -28,9 +29,12 @@ private var repository: UserRepository
             val userDao = UserDatabse.getDatabase(application).userDao()
             repository = UserRepository(userDao)
 
-            val readAllData: List<User>? = async { repository.readAllData().value }.await()
+            withContext(Dispatchers.IO){
+                val readAllData: List<User>? = repository.readAllData()
 
-            Log.d("TAG", "readAllData userViewModel: ${readAllData} ")
+                Log.d("TAG", "readAllData userViewModel: ${readAllData} ")
+            }
+
         }
 
     }
