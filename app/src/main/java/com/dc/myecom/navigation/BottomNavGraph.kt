@@ -1,6 +1,5 @@
 package com.dc.myecom
 
-import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -8,6 +7,7 @@ import androidx.navigation.compose.composable
 import com.dc.myecom.navigation.AuthScreen
 import com.dc.myecom.navigation.BottomBarScreen
 import com.dc.myecom.screen.*
+import com.dc.myecom.viewmodel.LoginViewModel
 import com.dc.myecom.viewmodel.ProfileViewModel
 import com.dc.myecom.viewmodel.UserViewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -17,7 +17,8 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 fun NavGraph(
     navController: NavHostController,
     profileViewModel: ProfileViewModel,
-    userViewModel: UserViewModel
+    userViewModel: UserViewModel,
+    loginViewModel: LoginViewModel
 ) {
 
 
@@ -34,10 +35,10 @@ fun NavGraph(
             OrderScreen(navController)
         }
         composable(route = BottomBarScreen.Profile.route){
-            ProfileScreen(navController)
+            ProfileScreen(navController, profileViewModel)
         }
         composable(route = AuthScreen.Login.route){
-            LoginScreen(navController)
+            LoginScreen(navController, loginViewModel)
         }
         composable(route = AuthScreen.Signup.route){
             SignupScreen(profileViewModel = profileViewModel, userViewModel = userViewModel, navController)

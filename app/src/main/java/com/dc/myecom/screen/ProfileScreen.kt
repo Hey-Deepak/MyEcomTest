@@ -24,9 +24,8 @@ import com.dc.myecom.screen.components.TopBar
 import com.dc.myecom.viewmodel.ProfileViewModel
 
 @Composable
-fun ProfileScreen(navController: NavHostController) {
+fun ProfileScreen(navController: NavHostController, profileViewModel: ProfileViewModel) {
     val context = LocalContext.current
-    val profileViewModel = ProfileViewModel()
     Scaffold(
         bottomBar = { BottomBar(navController = navController)}
     ) {

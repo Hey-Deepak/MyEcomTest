@@ -3,15 +3,16 @@ package com.dc.myecom.repository
 import androidx.lifecycle.LiveData
 import com.dc.myecom.data.User
 import com.dc.myecom.data.UserDao
+import javax.inject.Inject
 
-class UserRepository(
+class UserRepository @Inject constructor(
     private val userDao: UserDao
 ) {
-    val readAllData: LiveData<List<User>> = userDao.readAllData()
+   // val readAllData: LiveData<List<User>>? = userDao.readAllData()
 
-    /*fun readAllData(): LiveData<List<User>>{
-        userDao.readAllData()
-    }*/
+    fun readAllData(): LiveData<List<User>>{
+        return userDao.readAllData()
+    }
 
     suspend fun addUser(user: User){
         userDao.addUser(user)

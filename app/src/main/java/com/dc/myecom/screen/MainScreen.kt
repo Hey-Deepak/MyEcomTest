@@ -13,14 +13,15 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.dc.myecom.navigation.BottomBarScreen
 import com.dc.myecom.NavGraph
+import com.dc.myecom.viewmodel.LoginViewModel
 import com.dc.myecom.viewmodel.ProfileViewModel
 import com.dc.myecom.viewmodel.UserViewModel
 
 @Composable
-fun MainScreen(profileViewModel: ProfileViewModel, userViewModel: UserViewModel) {
+fun MainScreen(profileViewModel: ProfileViewModel, userViewModel: UserViewModel, loginViewModel: LoginViewModel) {
     val navController = rememberNavController()
 
-    NavGraph(navController = navController, profileViewModel, userViewModel)
+    NavGraph(navController = navController, profileViewModel, userViewModel, loginViewModel)
 
 }
 

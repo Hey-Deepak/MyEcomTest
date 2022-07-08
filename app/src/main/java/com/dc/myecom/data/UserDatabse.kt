@@ -10,6 +10,7 @@ abstract class UserDatabse: RoomDatabase() {
 
     abstract fun userDao():UserDao
 
+
     companion object{
         @Volatile
         private var INSTANCE: UserDatabse? = null

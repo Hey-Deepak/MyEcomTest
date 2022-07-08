@@ -9,7 +9,9 @@ import com.dc.myecom.data.ApiService
 import com.dc.myecom.data.api.APIService
 import com.dc.myecom.model.homebanner.HomeBanner
 import com.dc.myecom.model.topcategory.TopCategory
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.runBlocking
+
 
 class TopCategoryViewModel: ViewModel() {
     var topCategoryResponse: TopCategory by mutableStateOf(TopCategory())

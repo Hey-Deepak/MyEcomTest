@@ -7,6 +7,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.dc.myecom.data.ApiService
 import com.dc.myecom.model.homebanner.HomeBanner
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.runBlocking
 
 class MainViewModel: ViewModel() {

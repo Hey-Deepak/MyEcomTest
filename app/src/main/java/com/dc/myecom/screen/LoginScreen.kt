@@ -1,5 +1,6 @@
 package com.dc.myecom.screen
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -32,9 +33,8 @@ import com.dc.myecom.viewmodel.LoginViewModel
 import kotlin.math.log
 
 @Composable
-fun LoginScreen(navController: NavHostController) {
+fun LoginScreen(navController: NavHostController, loginViewModel: LoginViewModel) {
     val context = LocalContext.current
-    val loginViewModel = LoginViewModel()
 
     Column(
         modifier = Modifier
@@ -111,10 +111,14 @@ fun LoginScreen(navController: NavHostController) {
         // Sign-In Button
         Button(
             onClick = {
+                Log.d("TAG", "LoginScreen: ${loginViewModel.mobileNumber.value} ${loginViewModel.password.value}")
+                loginViewModel.isProfileExit(loginViewModel.mobileNumber.value, loginViewModel.password.value)
 
-            navController.navigate(BottomBarScreen.Home.route)
+                if (loginViewModel.isProfileExit.value) {
+                    navController.navigate(BottomBarScreen.Home.route)
+                    Toast.makeText(context, "User Signed In", Toast.LENGTH_LONG).show()
+                } else Toast.makeText(context, "Profile Doesn't Exit", Toast.LENGTH_LONG).show()
 
-                Toast.makeText(context, "User Signed In", Toast.LENGTH_LONG).show()
             },
             modifier = Modifier
                 .width(250.dp)
