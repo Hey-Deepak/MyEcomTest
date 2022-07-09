@@ -15,10 +15,9 @@
 6. Login Screen
 7. Profile Screen
 8. Home Screen
-9. Sign-up Screen
-10. Login Screen
+9. Sign-up Screen (Authorization)
+10. Login Screen (Room DB)
 
 ## Remaining
 1. Splash Screen
-2. Need to Modify Repo and ViewModel According to need.
-3. All Screen need to Connected with Nested Nav Graph
+
